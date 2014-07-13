@@ -182,9 +182,9 @@ return false;
  }
 
 
- int main(){
+ void add_elements(bool one , bool sec , bool third ){
 
-int n ;
+	 int n ;
 cout<<"How much files you want to place in?:";
 cin>>n;
 
@@ -201,7 +201,8 @@ NODE *pend = pbeg;
 
 NODE *pb = pbeg;
 
-  system("cls");
+if(one==true){
+	system("cls");
  int l=1;
  
  while(pb){
@@ -213,9 +214,9 @@ pb=pb->next;
 
   }
 
+ if(sec==true){
 
-
-
+ }
   cout<<"enter date. All the files which were creater earlier will be deleted.";
 	int date [3];
 	 cin>>date[0]>>date[1]>>date[2];
@@ -241,7 +242,9 @@ while(kit){
 }
 
 
+}
   // Shows thw file which has more resp
+
 cout<<"------------------------------------ \n";
 cout<<"Find more responses after deleting file"<<endl;
 NODE *p_b = pbeg;
@@ -249,5 +252,43 @@ get_info(file ,find_respon(pbeg));
 cout<<"------------------------------------ \n";
 
 
+ }
+
+ int menu();
+ int main(){
+
+	     int answer=menu();      
+    switch (answer)
+    {
+        case 0: add_elements(false, false, false); break;
+        case 1: add_elements(true,false, false); break;
+        case 2: add_elements (true,true,false) ;break;   
+        case 3: add_elements(true,false,true); break;
+    }
+    system("pause");
 
  return 0;}
+
+
+ int menu() {
+        int key=0; 
+        int code;  
+        do {
+                system("cls");  
+                key=(key+4)%4;  
+                if (key==0) cout<<"-> Just adding files without show"<<endl;                   
+                if (key==1) cout<<"-> Adding files and show them   ."<<endl; 
+                if (key==2) cout<<"-> Adding files and then we can delete them after typing date ."<<endl; 
+                if (key==3) cout<<"-> Shows file wich was more often called."<<endl; 
+                code=_getch();  
+                if (code==224)
+                {
+                    code=_getch();
+                    if (code==80) key++; 
+                    if (code==72) key--; 
+                        }
+           }while(code!=13); 
+        system("cls");  
+        return key; 
+}
+	
